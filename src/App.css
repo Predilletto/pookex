@@ -152,5 +152,5 @@ nav h1 {
 }
 
 #disabled {
-  background-color: #3a393c;
+  background-color: rgba(58, 57, 60, .5);
 }
