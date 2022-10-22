@@ -1,38 +1,18 @@
-import wordBank from "./data/pookex-bank.txt";
 import api from "./services/Api";
 
 export const CreateBoard = (correctPoke) => {
   const boardzin = Array(6)
     .fill()
     .map(() => Array(correctPoke.length).fill(""));
-
   return boardzin;
 };
 
-// export const boardDefault = [
-//   ["", "", "", "", ""],
-//   ["", "", "", "", ""],
-//   ["", "", "", "", ""],
-//   ["", "", "", "", ""],
-//   ["", "", "", "", ""],
-//   ["", "", "", "", ""],
-// ];
+export const getPokemonImg = async (pokemonName) => {
+  let urlImg = "";
 
-// export const generateWordSet = async () => {
-//   let wordSet;
-//   let todaysWord;
-//   let urlImg = "";
-
-//   await fetch(wordBank)
-//     .then((response) => response.text())
-//     .then((result) => {
-//       const wordArray = result.split(/\r\n/);
-//       todaysWord = "doduo";
-//       wordSet = new Set(wordArray);
-//     });
-
-//     await api.get(`pokemon-form/${todaysWord}`)
-//     .then((res) => urlImg = res.data.sprites.front_default)
-//     .catch(console.log)
-//     return {wordSet, todaysWord, urlImg}
-// }
+  await api
+    .get(`pokemon-form/${pokemonName.toLowerCase()}`)
+    .then((res) => (urlImg = res.data.sprites.front_default))
+    .catch(console.log);
+  return urlImg;
+};

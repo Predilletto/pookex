@@ -1,3 +1,5 @@
+import "./keyboard.css";
+
 import React, { useContext, useCallback, useEffect } from "react";
 import { AppContext } from "../../App";
 import Key from "./Key";

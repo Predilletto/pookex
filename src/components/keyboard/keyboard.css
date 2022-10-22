@@ -1,0 +1,59 @@
+.keyboard {
+  width: 700px;
+  margin-bottom: 5px;
+}
+
+.line1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.line2 {
+  padding-left: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px 5px;
+}
+.line3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.key {
+  width: 60px;
+  height: 50px;
+  margin-right: 5px;
+  border-radius: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1em;
+  background-color: #4c4347;
+  color: #fafaff;
+  font-family: "Mitr", sans-serif;
+  cursor: pointer;
+}
+
+.key img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+#enter {
+  width: 120px;
+}
+
+#delete {
+  width: 70px;
+}
+
+#disabled {
+  background-color: rgba(58, 57, 60, 0.5);
+}

@@ -1,4 +1,7 @@
+import "./board.css";
+
 import React, { useContext, useEffect } from "react";
+
 import { AppContext } from "../../App";
 
 const Letter = ({ letterPos, attemptVal }) => {
@@ -6,7 +9,7 @@ const Letter = ({ letterPos, attemptVal }) => {
     useContext(AppContext);
   const letter = board[attemptVal][letterPos];
 
-  const correct = correctWord.toUpperCase()[letterPos] === letter;
+  const correct = correctWord[letterPos] === letter;
   const almost = !correct && letter !== "" && correctWord.includes(letter);
 
   const letterState =

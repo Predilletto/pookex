@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import "./board.css";
+
+import React from "react";
 
 import Letter from "./Letter";
 

@@ -1,15 +1,12 @@
-import "./App.css";
+import "./app.css";
+import logo from "./imgs/POOKEX.png";
+
 import Board from "./components/board/Board";
 import Keyboard from "./components/keyboard/Keyboard";
 import GameOver from "./components/gameStatus/GameOver";
 
 import { createContext, useEffect, useState } from "react";
-import {
-  boardDefault,
-  CreateBoard,
-  generateWordSet,
-  getPokemonImg,
-} from "./Pookex";
+import { CreateBoard, getPokemonImg } from "./Pookex";
 import { pokeArr, pokeWord } from "./utils/Pokemon";
 
 export const AppContext = createContext();
@@ -17,7 +14,7 @@ export const AppContext = createContext();
 function App() {
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
   const [wordSet, setWordSet] = useState(new Set(pokeArr));
-  const [correctWord, setCorrectWord] = useState(pokeWord());
+  const [correctWord, setCorrectWord] = useState(pokeWord().toUpperCase());
   const [board, setBoard] = useState(CreateBoard(correctWord));
   const [imgPokemon, setImgPokemon] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([]);
@@ -26,8 +23,13 @@ function App() {
     guessedWord: false,
   });
 
+  useEffect(() => {
+    console.log(correctWord);
+    getPokemonImg(correctWord).then((url) => setImgPokemon(url));
+  }, [correctWord]);
+
   const onSelectLetter = (keyVal) => {
-    if (currAttempt.letterPos > 4) return;
+    if (currAttempt.letterPos > correctWord.length - 1) return;
     const newBoard = [...board];
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
     setBoard(newBoard);
@@ -35,10 +37,10 @@ function App() {
   };
 
   const onEnter = () => {
-    if (currAttempt.letterPos !== 5) return;
+    if (currAttempt.letterPos !== correctWord.length) return;
 
     let currWord = "";
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < correctWord.length; i++) {
       currWord += board[currAttempt.attempt][i];
     }
 
@@ -67,9 +69,9 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app__container">
       <nav>
-        <h1>Poo.kex</h1>{" "}
+        <img src={logo} alt="" border="0" style={{ height: "60px" }} />
       </nav>
       <div></div>
       <AppContext.Provider
