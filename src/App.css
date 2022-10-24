@@ -1,7 +1,9 @@
 body {
   display: flex;
   text-align: center;
-  background-color: #ffe3a9;
+  background-image: url("./imgs/Pokezin.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
 }
 

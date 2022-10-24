@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import logo from "./imgs/POOKEX.png";
 
 import Board from "./components/board/Board";
